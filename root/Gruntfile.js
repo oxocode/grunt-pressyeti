@@ -46,6 +46,7 @@ module.exports = function( grunt ) {
 			all: {
 				files: {
 					'assets/js/{%= js_safe_name %}.min.js': ['assets/js/{%= js_safe_name %}.js']
+					'assets/vendor/modernizr/modernizr.min.js': ['assets/vendor/modernizr/modernizr.js']
 				},
 				options: {
 					banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -66,13 +67,12 @@ module.exports = function( grunt ) {
 		sass:   {
 			all: {
 				options: {
-        				loadPath: ['assets/css/vendor/foundation/scss', 'assets/css/vendor/foundation/scss/foundation'],
-					//style: 'compressed',
-					//compass: true
+	        				loadPath: ['assets/vendor/foundation/scss', 'assets/vendor/foundation/scss/foundation'],
       				},
 				files: {
 					'assets/css/{%= js_safe_name %}.css': 'assets/css/sass/{%= js_safe_name %}.scss',
-					'assets/css/app.css': 'assets/css/sass/app.scss',
+					'assets/vendor/foundation.css': 'assets/vendor/foundation/scss/foundation.scss',
+					'assets/vendor/normalize.css': 'assets/vendor/foundation/scss/normalize.scss',
 				}
 			}
 		},
@@ -96,7 +96,7 @@ module.exports = function( grunt ) {
 			minify: {
 				expand: true,
 				{% if ('sass' === css_type || 'less' === css_type) { %}
-				cwd: 'assets/css/',
+				cwd: 'assets/',
 				src: ['*.css'],
 				{% } else { %}
 				cwd: 'assets/css/src/',
@@ -110,7 +110,7 @@ module.exports = function( grunt ) {
 			grunt: { files: ['Gruntfile.js'] },
 			{% if ('sass' === css_type) { %}
 			sass: {
-				files: ['assets/css/sass/*.scss','assets/css/vendor/foundation/scss/*.scss'],
+				files: ['assets/css/sass/*.scss','assets/vendor/foundation/scss/*.scss'],
 				tasks: ['sass', 'cssmin'],
 				options: {
 					debounceDelay: 500

@@ -42,17 +42,15 @@ define( '{%= prefix_caps %}_VERSION', '0.1.0' );
  function {%= prefix %}_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
-	wp_enqueue_script( '{%= prefix %}', get_template_directory_uri() . "/assets/js/vendor/modernizr.js", array(), {%= prefix_caps %}_VERSION, true );
+	wp_enqueue_script( 'modernizr', get_template_directory_uri() . "/assets/vendor/modernizr/modernizr{$postfix}.js", array(), {%= prefix_caps %}_VERSION, true );
 
-	wp_enqueue_script( '{%= prefix %}', get_template_directory_uri() . "/assets/js/vendor/foundation{$postfix}.js", array(), {%= prefix_caps %}_VERSION, true );
+	wp_enqueue_script( 'foundation', get_template_directory_uri() . "/assets/vendor/foundation/js/foundation{$postfix}.js", array(), {%= prefix_caps %}_VERSION, true );
 
 	wp_enqueue_script( '{%= prefix %}', get_template_directory_uri() . "/assets/js/{%= js_safe_name %}{$postfix}.js", array(), {%= prefix_caps %}_VERSION, true );
 
-	wp_enqueue_style( '{%= prefix %}', get_template_directory_uri() . "/assets/css/normalize{$postfix}.css", array(), {%= prefix_caps %}_VERSION );
+	wp_enqueue_style( 'normalize', get_template_directory_uri() . "/assets/vendor/normalize{$postfix}.css", array(), {%= prefix_caps %}_VERSION );
 
-	wp_enqueue_style( '{%= prefix %}', get_template_directory_uri() . "/assets/css/foundation{$postfix}.css", array(), {%= prefix_caps %}_VERSION );
-
-	wp_enqueue_style( '{%= prefix %}', get_template_directory_uri() . "/assets/css/apps{$postfix}.css", array(), {%= prefix_caps %}_VERSION );
+	wp_enqueue_style( 'foundation', get_template_directory_uri() . "/assets/vendor/foundation{$postfix}.css", array(), {%= prefix_caps %}_VERSION );
 
 	wp_enqueue_style( '{%= prefix %}', get_template_directory_uri() . "/assets/css/{%= js_safe_name %}{$postfix}.css", array(), {%= prefix_caps %}_VERSION );
  }
