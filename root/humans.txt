@@ -1,0 +1,17 @@
+/* TEAM */
+	Developer: {%= author_name %}
+	Contact:   {%= author_email %}
+	URI:       {%= author_url %}
+
+/* THANKS */
+	Template Design: couturefreak
+	URI:             http://gitnerd.com
+	Twitter:         @couturefreak
+
+	Template Design: Courtney Ivey (originally by Eric Mann, 10up)
+	URI:             http://gitnerd.com
+	Twitter:         @couturefreak
+
+/* SITE */
+	Created:  {%= grunt.template.today("yyyy-mm-dd") %}
+	Template: https://github.com/oxocode/grunt-pressyeti
